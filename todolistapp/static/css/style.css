@@ -1,0 +1,276 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #353434;
+    color: white;
+    font-family: "Arial";
+    margin: 0;
+}
+
+.main {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    min-height: 100vh;
+}
+
+.sources {
+    padding: 20px;
+    border-right: 2px solid white;
+    background-color: #2a2a2a;
+}
+
+.sources a {
+    display: block;          /* Ссылки блоками друг под другом */
+    color: white;
+    text-decoration: none;   /* Убираем подчеркивание */
+    margin: 10px 0;         /* Отступы между ссылками */
+    padding: 8px;
+    border-radius: 4px;
+    font-size: 25px
+}
+
+.content {
+    padding: 20px;
+}
+
+.content p {
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+.start {
+    background-color: #585858;
+    border: 2px solid white;
+    padding: 6px;
+    color: white;
+    margin-top: 30px;
+    border-radius: 30px;
+    width: 200px;
+    height: 60px;
+    font-size: 20px
+}
+
+button:hover {
+    transform: scale(1.05)
+}
+
+.field {
+    padding: 20px;
+    margin-top: 10px;  
+}
+
+.field label {
+    font-size: 22px;
+    margin-bottom: 5px;
+}
+
+.task-name {
+    margin-top: 10px;
+    border: 2px solid white;
+    border-radius: 5px;
+    background-color:#585858;
+    color: white;
+    width: 300px;
+    height: 40px;
+    font-size: 22px;
+    padding: 5px
+}
+
+.task-info {
+    margin-top: 10px;
+    border: 2px solid white;
+    border-radius: 5px;
+    background-color:#585858;    
+    color: white;
+    resize: none;
+    font-size: 15px;
+    padding: 5px
+}
+
+.form-control {
+    margin-top: 10px;
+    border: 2px solid white;
+    border-radius: 5px;
+    background-color: #585858;
+    color: white;
+    width: 300px;
+    height: 40px;
+    font-size: 18px;
+    padding: 5px;
+}
+
+.task-image, .note-image {
+    margin-top: 10px;
+    color: white;
+    font-size: 16px;
+}
+
+.task-image::file-selector-button, .note-image::file-selector-button {
+    background-color: #585858;
+    color: white;
+    border: 2px solid white;
+    border-radius: 5px;
+    padding: 8px 12px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.add-button, .search-button {
+    background-color: #232323;
+    border: 2px solid white;
+    padding: 6px;
+    color: white;
+    margin-top: 30px;
+    border-radius: 30px;
+    width: 200px;
+    height: 60px;
+    font-size: 20px;
+}
+
+.task-container, .note-container {
+    display: grid;
+    grid-template: 1fr auto;
+    padding: 15px;
+    border: 2px solid white;
+    background-color: #2a2a2a;
+    border-radius: 10px;
+    margin: 10px 0;
+    gap: 20px;
+}
+
+
+.image-task, .image-note {
+    width: 200px;
+    height: 200px;
+    border: 2px solid white;
+    border-radius: 10px;
+}
+
+.is-completed, .edit {
+    width: 100px;
+    height: 40px;
+    border: 2px solid white;
+    border-radius: 10px;
+    background-color: rgb(0, 0, 0);
+    color: white;
+    margin-right: 5px;
+}
+
+.password-field, .username-field, .email-field {
+    background-color: #2a2a2a;
+    color: white;
+    border: 2px solid black;
+    border-radius: 10px;
+    margin-top: 10px;
+    padding: 5px;
+    width: 200px;
+    height: 52px;
+}
+
+.delete {
+    background-color: #ca0000;
+    color: white;
+    border: 2px solid black;
+    border-radius: 10px;
+    margin-top: 10px;
+    padding: 5px;
+    width: 90px;
+    height: 50px;    
+}
+
+.add-note-container {
+    display: flex;  /* Горизонтальное выравнивание по центру */
+    align-items: center;      /* Вертикальное выравнивание по центру */
+    flex-direction: column;   /* Элементы в колонку (если нужно) */
+    min-height: 100vh;        /* Минимальная высота на весь экран */
+}
+
+.note-name {
+    margin-top: 10px;
+    text-align: center;
+    border: none;                    /* Убираем все границы */
+    border-bottom: 2px solid white;  /* Только нижняя граница */
+    border-radius: 0;                /* Убираем скругление */
+    background-color: transparent;   /* Прозрачный фон */
+    color: white;
+    width: 300px;
+    height: 40px;
+    font-size: 22px;
+    padding: 5px;
+    margin-bottom: 10px;
+    outline: none;                   /* Убираем синюю обводку при фокусе */
+    transition: border-color 0.3s ease; /* Плавное изменение цвета границы */
+}
+
+.note-info {
+    outline: none;
+    background-color: transparent;
+    resize: none;
+    color: white;
+    width: 700px;
+    height: 400px;
+    padding: 10px;
+} 
+
+.note-container a {
+    color: white;
+}
+
+.my-notes-image {
+    border: 2px solid;
+    border-radius: 10px;
+    width: 200px;
+    height: 200px;
+}
+
+.note-content {
+    display: grid;
+    grid-template-columns: auto 1fr; /* Картинка - по размеру, текст - остальное */
+    gap: 30px;
+    align-items: start;
+}
+
+.note-details-image {
+    border: 2px solid;
+    border-radius: 10px;
+    width: 300px;
+    height: 300px; 
+}
+
+.note-details h1 {
+    text-align: center
+}
+
+.is-completed-true {
+    width: 100px;
+    height: 40px;
+    border: 2px solid white;
+    border-radius: 10px;
+    background-color: rgb(6, 255, 22);
+    color: white;
+    margin-right: 5px;    
+}
+
+.profile-container {
+    padding: 20px;
+}
+
+.user-info-username {
+    font-size: 42px;
+    margin-bottom: 15px;
+}
+
+.search {
+    background-color: #2a2a2a;
+    color: white;
+    border: 2px solid black;
+    border-radius: 10px;
+    margin-top: 10px;
+    padding: 5px;
+    width: 200px;
+    height: 52px;
+}
