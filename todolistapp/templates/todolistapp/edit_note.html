@@ -1,0 +1,13 @@
+{% extends "todolistapp/base.html" %}
+{% block title %}Edit Note{% endblock %}
+{% block content %}
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="add-note-container">
+        <div>{{ form.name }}</div>
+        <div>{{ form.info }}</div>
+        <div>{{ form.image }}</div>
+        <button class="add-button" type="submit">Сохранить заметку</button>
+    </div>
+</form>
+{% endblock %}

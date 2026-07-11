@@ -1,0 +1,59 @@
+{% extends "todolistapp/base.html" %}
+{% block title %}My Notes{% endblock %}
+{% block content %}
+<div>
+    <form method="GET" action="{% url 'main:note_search' %}">
+        <input type="text" name="q" class="search" placeholder="🔎 Поиск заметок" value="{{ request.GET.q|default:'' }}"><br>
+        <button type="submit" style="margin-bottom: 15px" class="search-button">Найти заметку</button>
+    </form>
+</div>
+<div>
+    {% for note in notes %}
+        <div class="note-container">
+            <div>
+                <h2>{{ note.name }}</h2>
+            </div>
+            <div>
+                <a href="{{ note.get_absolute_url }}"><p>{{ note.info|truncatechars:15 }}</p></a>
+            </div>
+            <div>
+                <p>{{ note.created_at }}</p>
+            </div>
+            {% if note.image %}
+                <div>
+                    <img class="my-notes-image" src="{{ note.image.url }}" alt="">
+                </div>
+            {% endif %}
+            <div>
+                <form action="{% url 'main:delete_note' note.id %}">
+                    {% csrf_token %}
+                    <button type="submit" class="delete">
+                        Удалить заметку
+                    </button>
+                </form>
+            </div>
+            <div>
+                <form action="{% url 'main:edit_note' slug=note.slug %}">
+                    <input class="edit" type="submit" value="Редактировать">
+                </form>
+            </div>
+        </div>
+    {% endfor %}
+
+    <div class="paginator">
+        <span>
+            {% if page_obj.has_previous %}
+                <a href="?page={{ page_obj.previous_page_number }}">⬅️</a>
+            {% endif %}
+        </span>
+        <span>
+            <p>{{ page_obj.number }} из {{ page_obj.paginator.num_pages }}</p>
+        </span>
+        <span>
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">➡️</a>
+            {% endif %}
+        </span>
+    </div>
+</div>
+{% endblock %}

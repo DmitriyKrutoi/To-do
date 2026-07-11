@@ -1,0 +1,11 @@
+{% extends 'todolistapp/base.html' %}
+{% block title %}Note Details{% endblock %}
+{% block content %}
+<div class="note-details">
+    <h1> Заметка "{{ note.name }}"</h1><br>
+    {% if note.image %}
+        <img class="note-details-image" src="{{ note.image.url }}" alt="">
+    {% endif %}
+    <p>{{ note.info }}</p>
+</div>
+{% endblock %}

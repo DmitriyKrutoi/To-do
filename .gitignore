@@ -1,0 +1,8 @@
+.env
+*.sqlite3
+myvenv/
+__pycache__/
+*.pyc
+static/
+media/
+postgres_data/

@@ -1,0 +1,19 @@
+{% extends 'todolistapp/base.html' %}
+{% block title %}Main{% endblock %}
+{% block content %}
+{% if user.is_authenticated %}
+    <h1>Привет, {{ user.username }}</h1>
+    <p>Что планируем сегодня?</p>
+    <form action="{% url 'main:add_task' %}">
+        <input class="start" type="submit" value="Добавить задачу">
+    </form>
+{% else %}
+    <h1>Чтобы организовать свое время, начни с моего To-do listа</h1><br>
+    <p><b>Почему именно мой To-do list?</b></p>
+    <p>Да фиг его знает, он просто прикольный капец, потому что его сделал 14-летний пацан в одиночку, <br>слушая бразильский фонк</p>
+    <p>Но все-таки, чтобы начать работу - зарегистрируйся/залогинься и, черт возьми, начни организовывать свой день!</p>
+    <form action="{% url 'users:register' %}">
+        <input class="start" type="submit" value="Начать">
+    </form>
+{% endif %}
+{% endblock %} 

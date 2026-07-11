@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Маладец</title>
+</head>
+<body>
+    <div class="main" style="display: flex; justify-content: center;">
+        <div class="content" style="text-align: center">
+            <h1 style="margin-bottom: 10px">Молодец</h1>
+            <h2>+1 🔥</h2>
+            <form action="{% url 'main_page' %}">
+                {% csrf_token %}
+                <input class="start" type="submit" value="Продолжить">
+            </form>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,9 @@
+{% extends "users/base.html" %}
+{% block title %}Profile{% endblock %}
+{% block content %}
+<div class="profile-container">
+    <h2 class="user-info-username">{{ user.username }}</h2>
+    <h2> Почта: {{ user.email }}</h2>
+    <h2>Стрик серий выполненных задач: {{ user.profile.streak }}  🔥</h2><p>({{ streak_message }})</p>
+</div>
+{% endblock %}

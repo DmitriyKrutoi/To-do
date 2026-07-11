@@ -1,0 +1,59 @@
+{% extends "todolistapp/base.html" %}
+{% block title %}My Tasks{% endblock %}
+{% block content %}
+{% for task in tasks %}
+    <div class="task-container">
+        <div>
+            <h2 class="name-task">{{ task.name }}</h2>
+        </div>
+        <div>
+            <h2 class="name-task">{{ task.due_time|time:"H:i" }}</h2>
+        </div>
+        {% if task.info %}
+            <div class="info"><p>{{ task.info }}</p></div>
+        {% endif %}
+        {% if task.image %}
+            <div>
+                <img class="image-task"src="{{ task.image.url }}" alt="не загрузилось">
+            </div>
+        {% endif %}
+        <form action="{% url 'main:complete_task' task.id %}" method="post">
+            {% csrf_token %}
+            <button id="completeButton" type="submit" class="is-completed{% if task.is_completed %}-true{% endif %}">
+            {% if task.is_completed %}
+                Выполнено!
+            {% else %}
+                Выполнено?
+            {% endif %}
+            </button>
+        </form>
+        <form action="{% url 'main:delete_task' task.id %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="delete">
+                Удалить задачу
+            </button>
+        </form>
+    </div>
+    <br>
+{% endfor %}
+
+{% if tasks %}
+    <div class="complete-all-section">
+        <form action="{% url 'main:complete_all_reward' %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="start">
+                Завершить задачи
+            </button>
+        </form>
+    </div>
+{% else %}
+    <h1>У вас пока нет задач!</h1>
+{% endif %}
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">
+            <p>{{ message }}</p>
+        </div>
+    {% endfor %}
+{% endif %}
+{% endblock %}
